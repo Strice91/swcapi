@@ -1,0 +1,55 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "swcapi"
+version = "0.0.1"
+description = "Software Campus Easy Verein API"
+readme = "README.md"
+authors = ["r.strice@gmail.com"]
+
+packages = [{ include = "swcapi" }]
+
+[tool.poetry.dependencies]
+python = ">=3.11"
+dynaconf = "^3.2.0"
+python-easyverein = "^1.1"
+
+[tool.poetry.extras]
+
+[tool.black]
+line-length = 120
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 120
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "ICN", # import conventions
+    "PL",  # pylint
+    "RUF", # ruff
+    "UP",  # pyupgrade
+    "W",   # pycodestyle warnings
+]
+ignore = [
+    "F841",    # Local variable unsed
+    "PLC1901", # expression can be simplified as an empty string is falsey
+    "PLR0913", # too many arguments to function call
+    "PLR2004", # magic value used in comparison, consider replacing it with a constant variable
+    "PLW2901", # loop variable overwritten by assignment target
+    "UP038",   # use `X | Y` in `isinstance` call instead of `(X, Y)`
+]
+
+[tool.pytest.ini_options]
+markers = [
+    "synthetic: marks tests using synthetic data (deselect with '-m \"not synthetic\"')",
+    "real: marks tests using real data (deselect with '-m \"not real\"')",
+    "data: marks tests requiring stored test data (deselect with '-m \"not data\"')",
+    "model: marks tests requiring stored models (deselect with '-m \"not model\"')",
+]
+
+[tool.coverage.run]

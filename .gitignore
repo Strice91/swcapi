@@ -1,0 +1,9 @@
+.vscode/
+.idea/
+config/
+
+.DS_Store
+*.log
+*.pkl
+
+*__pycache__*
